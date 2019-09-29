@@ -3,6 +3,9 @@ jobs:
   build:
     docker:
       - image: debian:stretch
+        environment:
+          COLOR: red
+          PORT: 8083
 
     steps:
       - checkout
@@ -11,3 +14,6 @@ jobs:
           name: Greeting
           command: echo Hello
 
+      - run:
+        name: Test SSH
+        command: echo SSH
