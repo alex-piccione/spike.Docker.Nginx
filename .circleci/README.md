@@ -16,3 +16,6 @@ Where to store secret data?
 6. [ ] start a new instance  (skip for the first try)
 7. [ ] Switch the DNS (skip for the first try)
 8. [ ] run the new image
+
+
+https://github.com/halfer/cd-demo-container/blob/master/.circleci/config.yml
