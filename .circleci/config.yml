@@ -16,7 +16,7 @@ jobs:
 
       - run:
           name: Test SSH
-          command: echo SSH ${USER}@${SERVER_HOST}
+          command: echo SSH $USER@$SERVER_ADDRESS
 
       #- run:
       #  name: Pull Nginx image
