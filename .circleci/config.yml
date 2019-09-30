@@ -20,7 +20,7 @@ jobs:
       - run:
           name: Test SSH
           command: | 
-            echo SSH $USER@$SERVER_ADDRESS -o StrictHostKeyChecking=no
+            echo SSH $USER@$SERVER_ADDRESS 
             apt-get update -y
             apt-get install openssh-client -y
             ls -l /usr/bin/ssh
@@ -30,7 +30,7 @@ jobs:
           command: | 
             mkdir -p ~/.ssh
             echo $K > ~/.ssh/k
-            ssh $USER@$SERVER_ADDRESS -i ~/.ssh/k bash -c '
+            ssh $USER@$SERVER_ADDRESS -o StrictHostKeyChecking=no -i ~/.ssh/k bash -c '
               mkdir -p ~/temp
               touch ~/temp/${CIRCLE_BUILD_NUM}.txt
             '
