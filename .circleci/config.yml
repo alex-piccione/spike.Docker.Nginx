@@ -30,6 +30,9 @@ jobs:
           command: | 
             mkdir -p ~/.ssh
             echo $K > ~/.ssh/k
+            ls -l ~/.ssh
+            chmod 600 ~/.ssh/k
+            echo 
             ssh $USER@$SERVER_ADDRESS -o StrictHostKeyChecking=no -i ~/.ssh/k bash -c '
               mkdir -p ~/temp
               touch ~/temp/${CIRCLE_BUILD_NUM}.txt
