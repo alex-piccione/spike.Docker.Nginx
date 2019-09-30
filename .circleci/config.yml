@@ -20,7 +20,7 @@ jobs:
       - run:
           name: Test SSH
           command: | 
-            echo SSH $USER@$SERVER_ADDRESS
+            echo SSH $USER@$SERVER_ADDRESS -o StrictHostKeyChecking=no
             apt-get update -y
             apt-get install openssh-client -y
             ls -l /usr/bin/ssh
