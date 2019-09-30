@@ -21,7 +21,7 @@ jobs:
           name: Test SSH
           command: | 
             echo SSH $USER@$SERVER_ADDRESS
-            apt-get update
+            apt-get update -u
             apt-get install openssh-client
             ls -l /usr/bin/ssh
 
