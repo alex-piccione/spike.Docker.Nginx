@@ -2,6 +2,8 @@
 
 https://discuss.circleci.com/t/ssh-connection-from-circleci-build-server-to-remote-server-not-being-allowed/22964
 
+[![CircleCI](https://circleci.com/gh/alex75it/spike.Docker.Nginx/tree/master.svg?style=svg)](https://circleci.com/gh/alex75it/spike.Docker.Nginx/tree/master)
+
 ## credentials and keys
 
 Where to store secret data?
