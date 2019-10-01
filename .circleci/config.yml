@@ -10,8 +10,8 @@ jobs:
     steps:
       - checkout
 
-      #- setup_remote_docker:
-      #    docker_layer_caching: true
+      - setup_remote_docker:
+          docker_layer_caching: true
 
       # https://circleci.com/docs/2.0/configuration-reference/#add_ssh_keys
       - add_ssh_keys:
@@ -20,8 +20,8 @@ jobs:
             #- "gq9ZdwfeODAMwg42mRBXRDSw6PJ0URxuhPydKtFSyoI"
 
       - run:
-          name: Greeting
-          command: echo Hello
+          name: Info
+          command: echo Build: $CIRCLE_BUILD_NUM (${CIRCLE_BUILD_NUM}) 
 
       - run:
           name: Test SSH
@@ -42,5 +42,5 @@ jobs:
             #ssh $USER@$SERVER_ADDRESS -o StrictHostKeyChecking=no -i ~/.ssh/k bash -c '
             ssh $USER@$SERVER_ADDRESS -o StrictHostKeyChecking=no bash -c '
               mkdir -p ~/temp
-              touch ~/temp/build_${CIRCLE_BUILD_NUM}.txt
+              touch ~/temp/build_$CIRCLE_BUILD_NUM.txt
             '
