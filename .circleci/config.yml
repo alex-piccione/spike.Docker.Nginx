@@ -21,7 +21,7 @@ jobs:
 
       - run:
           name: Info
-          command: echo Build: $CIRCLE_BUILD_NUM (${CIRCLE_BUILD_NUM})
+          command: echo "Build: $CIRCLE_BUILD_NUM (${CIRCLE_BUILD_NUM})"
 
       - run:
           name: Test SSH
@@ -35,7 +35,7 @@ jobs:
           name: Pull Nginx image
           command: | 
             mkdir -p ~/.ssh
-            echo 4096 SHA256:gq9ZdwfeODAMwg42mRBXRDSw6PJ0URxuhPydKtFSyoI alex@Alex-PC (RSA) > ~/known_hosts
+            echo "4096 SHA256:gq9ZdwfeODAMwg42mRBXRDSw6PJ0URxuhPydKtFSyoI alex@Alex-PC (RSA)" > ~/.ssh/known_hosts
             #echo $K > ~/.ssh/k
             #ls -l ~/.ssh
             #chmod 600 ~/.ssh/k
