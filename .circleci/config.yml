@@ -21,7 +21,7 @@ jobs:
 
       - run:
           name: Info
-          command: echo "Build: $CIRCLE_BUILD_NUM (${CIRCLE_BUILD_NUM})"
+          command: echo "Build:: $CIRCLE_BUILD_NUM (${CIRCLE_BUILD_NUM})"
 
       - run:
           name: Test SSH
