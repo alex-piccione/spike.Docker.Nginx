@@ -44,4 +44,12 @@ jobs:
             ssh $USER@$SERVER_ADDRESS -o StrictHostKeyChecking=no bash -c '
               mkdir -p ~/temp
               touch ~/temp/build_$CIRCLE_BUILD_NUM.txt
+              docker ps
+              docker pull nginx
+              docker_stop web_test
+              docker rm web_test
+              docker run -d -p 8082:80 --name web_test nginx
+              docker ps
+              curl http://localhost:8082
+
             '
