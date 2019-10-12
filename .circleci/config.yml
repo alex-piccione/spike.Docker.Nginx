@@ -17,7 +17,6 @@ jobs:
       - add_ssh_keys:
           fingerprints:
             - "36:2d:7e:36:8d:f5:e0:fd:d3:3c:b0:31:ad:ee:26:e6"
-            #- "gq9ZdwfeODAMwg42mRBXRDSw6PJ0URxuhPydKtFSyoI"
 
       - run:
           name: Info
@@ -28,8 +27,17 @@ jobs:
           command: | 
             echo SSH $USER@$SERVER_ADDRESS 
             apt-get update -y
-            apt-get install openssh-client -y
+            # following comamnd try to avoid noisy error messages like: debconf: unable to initialize frontend: Dialog
+            # from https://github.com/moby/moby/issues/27988
+            apt-get install dialog apt-utils -y -q 
+            apt-get install openssh-client -y            
             ls -l /usr/bin/ssh
+
+      - run: 
+          name: Build the image
+          command: docker build echo "TODO"
+          # https://blog.grossman.io/continues-integration-with-circleci-and-angular-cli-2/
+
 
       - run:
           name: Pull Nginx image
@@ -44,12 +52,12 @@ jobs:
             ssh $USER@$SERVER_ADDRESS -o StrictHostKeyChecking=no bash -c '
               mkdir -p ~/temp
               touch ~/temp/build_$CIRCLE_BUILD_NUM.txt
-              docker ps
+              docker ps -a
               docker pull nginx
-              docker_stop web_test
+              docker stop web_test
               docker rm web_test
               docker run -d -p 8082:80 --name web_test nginx
-              docker ps
+              docker ps -a
               curl http://localhost:8082
 
             '
