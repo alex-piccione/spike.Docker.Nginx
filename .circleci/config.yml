@@ -2,7 +2,7 @@ version: 2
 jobs:
   build:
     docker:   
-      - image: docker # ubuntu # debian:stretch
+      - image: circleci/ubuntu:19.04 # ubuntu # debian:stretch
         environment:
           COLOR: red
           PORT: 8083
@@ -24,14 +24,16 @@ jobs:
 
       - run:
           name: Setup SSH
-          command: | 
-            echo SSH $USER@$SERVER_ADDRESS 
-            apt-get update -y
+          command: echo "use a convenient image so it already have open SSH"
+            # https://circleci.com/docs/2.0/circleci-images/
+
+            #echo SSH $USER@$SERVER_ADDRESS 
+            #apt-get update -y
             # following comamnd try to avoid noisy error messages like: debconf: unable to initialize frontend: Dialog
             # from https://github.com/moby/moby/issues/27988
-            apt-get install dialog apt-utils -y -q 
-            apt-get install openssh-client -y            
-            ls -l /usr/bin/ssh
+            #apt-get install dialog apt-utils -y -q 
+            #apt-get install openssh-client -y            
+            #ls -l /usr/bin/ssh
 
       - run: 
           name: Build the image
