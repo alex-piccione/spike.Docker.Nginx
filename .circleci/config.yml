@@ -4,7 +4,7 @@ jobs:
     docker:   
       - image: circleci/buildpack-deps:jessie # ubuntu # debian:stretch
         environment:
-          COLOR: red
+          VERSION: 0.1
           PORT: 8083
 
     steps:
@@ -40,7 +40,7 @@ jobs:
           command: | 
             TAG=0.1.$CIRCLE_BUILD_NUM
             # "-rm" is unknown and returns an error
-            image=docker build -q -t web:$TAG . 
+            let image=docker build -q -t web:$TAG . 
             ## use commit version
             echo "Image: $image"
             #docker login ...
