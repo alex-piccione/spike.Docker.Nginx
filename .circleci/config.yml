@@ -2,7 +2,7 @@ version: 2
 jobs:
   build:
     docker:   
-      - image: circleci/ubuntu:19.04 # ubuntu # debian:stretch
+      - image: circleci/buildpack-deps:jessie # ubuntu # debian:stretch
         environment:
           COLOR: red
           PORT: 8083
