@@ -38,7 +38,7 @@ jobs:
       - run: 
           name: Build the image
           command: | 
-            image= docker build -rm -q -t web:$CIRCLE_BUILD_NUM . 
+            image=docker build -rm -q -t web:$CIRCLE_BUILD_NUM . 
             ## use commit version
             echo "Image: $image"
 
